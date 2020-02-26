@@ -3,8 +3,11 @@ Sultanov Andriy
 Lab 4 Year 1 Semester 2
 '''
 import datetime
-# Store the next available id for all new notes
+
+
+# Store the next available id for all new notes in a global variable
 last_id = 0
+
 
 class Note:
     """
@@ -79,7 +82,7 @@ class Notebook:
     Has methods:
         __str__ - returns a nicely formatted string
         __repr__ - returns a pythonish strict representation
-        new_note - creates a new nite given a memo
+        new_note - creates a new Note given a memo
         _find_note - an internal function looking for a note with a given id
         modify_memo - changes the contents of a memo by an id
         modify_tags - changes the tags of a memo by an id
@@ -88,7 +91,7 @@ class Notebook:
 
     def __init__(self):
         """
-        (None) -> None
+        (None) -> Notebook
 
         Initialize a notebook with an empty list.
         """
@@ -97,7 +100,7 @@ class Notebook:
 
     def __str__(self):
         """
-        (None) -> None
+        (Notebook) -> string
 
         Returns a nicely formatted string of all the notes in the Notebook
         """
@@ -123,7 +126,7 @@ class Notebook:
         Locate the note with the given id.
         """
         for note in self.notes:
-            if note.id == note_id:
+            if str(note.id) == str(note_id):
                 return note
         return None
 
@@ -138,7 +141,7 @@ class Notebook:
         try:
             self._find_note(note_id).memo = memo
         except AttributeError:
-            return "Note with id {} not found".format(note_id)
+            print("Note with id {} not found".format(note_id))
 
 
     def modify_tags(self, note_id, tags):
@@ -151,7 +154,7 @@ class Notebook:
         try:
             self._find_note(note_id).tags = tags
         except AttributeError:
-            return "Note with id {} not found".format(note_id)
+            print("Note with id {} not found".format(note_id))
 
 
     def search(self, filtr):
