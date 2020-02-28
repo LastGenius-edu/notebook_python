@@ -11,7 +11,8 @@ last_id = 0
 
 class Note:
     """
-    Represent a note in the notebook. Match against a string in searches and store tags for each note.
+    Represent a note in the notebook. Match against ф
+    string in searches and store tags for each note.
 
     Has attributes:
         memo - string representing the body of the note
@@ -40,15 +41,14 @@ class Note:
         last_id += 1
         self.id = last_id
 
-
     def __str__(self):
         '''
         (Note) -> string
 
         Returns a nicely formatted string
         '''
-        return "\nNote created on {}.\nTags: {}:\n{}".format(self.creation_date, ", ".join(self.tags), self.memo)
-
+        return f"\nNote created on {self.creation_date}." \
+               f"\nTags: {', '.join(self.tags)}:\n{self.memo}"
 
     def __repr__(self):
         '''
@@ -106,7 +106,8 @@ class Notebook:
         """
         result = "\nNotebook:\n"
         for note in self.notes:
-            result += "\nNote created on {}.\nTags: {}\nMemo: {}".format(note.creation_date, ", ".join(note.tags), note.memo)
+            result += f"\nNote created on {note.creation_date}.\nTags: " \
+                      f"{', '.join(note.tags)}\nMemo: {note.memo}"
         return result
 
 
@@ -141,7 +142,7 @@ class Notebook:
         try:
             self._find_note(note_id).memo = memo
         except AttributeError:
-            print("Note with id {} not found".format(note_id))
+            print(f"Note with id {note_id} not found")
 
 
     def modify_tags(self, note_id, tags):
@@ -154,7 +155,7 @@ class Notebook:
         try:
             self._find_note(note_id).tags = tags
         except AttributeError:
-            print("Note with id {} not found".format(note_id))
+            print(f"Note with id {note_id} not found")
 
 
     def search(self, filtr):
@@ -166,6 +167,9 @@ class Notebook:
 
 
 def main():
+    '''
+    Test function
+    '''
     n1 = Note("hello first")
     n2 = Note("hello again")
     print(n1.id)
