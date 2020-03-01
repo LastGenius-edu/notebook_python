@@ -4,7 +4,6 @@ Lab 4 Year 1 Semester 2
 '''
 import datetime
 
-
 # Store the next available id for all new notes in a global variable
 last_id = 0
 
@@ -58,7 +57,6 @@ class Note:
         '''
         return "Note({}, {}, {})".format(self.memo, self.creation_date, self.tags)
 
-
     def match(self, filtr):
         """
         (string) -> bool
@@ -97,7 +95,6 @@ class Notebook:
         """
         self.notes = []
 
-
     def __str__(self):
         """
         (Notebook) -> string
@@ -110,7 +107,6 @@ class Notebook:
                       f"{', '.join(note.tags)}\nMemo: {note.memo}"
         return result
 
-
     def new_note(self, memo, tags=()):
         """
         (string, list) -> None
@@ -118,7 +114,6 @@ class Notebook:
         Create a new note and add it to the list.
         """
         self.notes.append(Note(memo, tags))
-
 
     def _find_note(self, note_id):
         """
@@ -130,7 +125,6 @@ class Notebook:
             if str(note.id) == str(note_id):
                 return note
         return None
-
 
     def modify_memo(self, note_id, memo):
         """
@@ -144,7 +138,6 @@ class Notebook:
         except AttributeError:
             print(f"Note with id {note_id} not found")
 
-
     def modify_tags(self, note_id, tags):
         """
         (int, list) -> None
@@ -156,7 +149,6 @@ class Notebook:
             self._find_note(note_id).tags = tags
         except AttributeError:
             print(f"Note with id {note_id} not found")
-
 
     def search(self, filtr):
         """
