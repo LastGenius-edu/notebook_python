@@ -185,6 +185,10 @@ def main():
 
     print(n)
 
+    print("\n\nObject of class Note: ", n1)
+    print("\nIs n1 an instance of the class Note? ", isinstance(n1, Note))
+    print("\nMethods of class Note:", dir(n1))
+
 
 if __name__ == '__main__':
     main()
